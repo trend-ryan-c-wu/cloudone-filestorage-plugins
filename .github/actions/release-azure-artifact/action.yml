@@ -38,13 +38,13 @@ runs:
     - name: Zip Files
       shell: bash
       run: |
-        ZIP_DIR=${{ inputs.plugin_path }}/zip
+        ZIP_DIR=${{ github.workspace }}/${{ inputs.plugin_path }}/zip
         mkdir -p $ZIP_DIR
         cd ${{ inputs.plugin_path }}
 
         for function in $(echo '${{ inputs.plugin_functions }}' | jq -r '.[]'); do
-          zip -rq $ZIP_DIR/$function.zip $function -x "*.funcignore" "*requirements.txt"
-          zip $ZIP_DIR/$function.zip version.json
+          zip -rq zip/$function.zip $function -x "*.funcignore" "*requirements.txt"
+          zip $ZIP_DIR/$funcion.zip version.json
         done
 
     - name: Upload Release Asset
