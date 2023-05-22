@@ -43,7 +43,7 @@ runs:
 
         for function in $(echo '${{ inputs.plugin_functions }}' | jq -r '.[]'); do
           cd ${{ inputs.plugin_path }}/$function
-          zip -rq $ZIP_DIR/$function.zip -x "*.funcignore" "*requirements.txt"
+          zip -rq $ZIP_DIR/$function.zip . -x "*.funcignore" "*requirements.txt"
           cd ${{ github.workspace }}
         done
 
