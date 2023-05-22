@@ -43,7 +43,8 @@ runs:
         cd ${{ inputs.plugin_path }}
 
         for function in $(echo '${{ inputs.plugin_functions }}' | jq -r '.[]'); do
-          zip -rq zip/$function.zip $function -x "*.funcignore" "*requirements.txt"
+          zip -rq $ZIP_DIR/$function.zip $function -x "*.funcignore" "*requirements.txt"
+          zip $ZIP_DIR/$function.zip version.json
         done
 
     - name: Upload Release Asset

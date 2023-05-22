@@ -45,7 +45,7 @@
     "variables": {
         "location": "[resourceGroup().location]",
         "unifiedSAS": "[if(empty(parameters('sharedAccessSignature')), '', if(startsWith(parameters('sharedAccessSignature'), '?'), parameters('sharedAccessSignature'), concat('?', parameters('sharedAccessSignature'))))]",
-        "functionPackageLink": "[concat(parameters('functionsPackageLocation') ,'/teamsNotification.zip', variables('unifiedSAS'))]",
+        "functionPackageLink": "[concat(parameters('functionsPackageLocation') ,'/slackNotification.zip', variables('unifiedSAS'))]",
         "functionAppName": "[parameters('fssSlackFunctionName')]",
         "hostingPlanName": "[parameters('fssSlackFunctionName')]",
         "applicationInsightsName": "[parameters('fssSlackFunctionName')]",
