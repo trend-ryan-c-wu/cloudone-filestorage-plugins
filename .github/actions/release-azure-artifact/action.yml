@@ -40,10 +40,15 @@ runs:
       run: |
         ZIP_DIR=${{ inputs.plugin_path }}/zip
         mkdir -p $ZIP_DIR
-        cd ${{ inputs.plugin_path }}
 
         for function in $(echo '${{ inputs.plugin_functions }}' | jq -r '.[]'); do
-          zip -rqj zip/$function.zip $function/ -x "*.funcignore" "*requirements.txt"
+          cd ${{ inputs.plugin_path }}
+          zip -rq $ZIP_DIR/$function.zip .python_packages
+
+          cd $function
+          zip -rq zip/$function.zip . "*.funcignore" "*requirements.txt"
+
+          cd ${{ github.workspace }}
         done
 
     - name: Upload Release Asset
