@@ -50,7 +50,7 @@ jobs:
           echo "teams_notification=$teams_notification_version" >> $GITHUB_OUTPUT
 
       - name: Handle for Quarantine or Promote Plugin
-        if: contains(steps.changed-files.outputs.all_changed_files, 'azure-python-promote-or-quarantine')
+        # if: contains(steps.changed-files.outputs.all_changed_files, 'azure-python-promote-or-quarantine')
         uses: ./.github/actions/release-azure-artifact
         with:
           plugin_path: post-scan-actions/azure-python-promote-or-quarantine

@@ -42,12 +42,8 @@ runs:
         mkdir -p $ZIP_DIR
 
         for function in $(echo '${{ inputs.plugin_functions }}' | jq -r '.[]'); do
-          cd ${{ inputs.plugin_path }}
-          zip -rq $ZIP_DIR/$function.zip .python_packages
-
-          cd $function
-          zip -rq zip/$function.zip . "*.funcignore" "*requirements.txt"
-
+          cd ${{ inputs.plugin_path }}/$function
+          zip -rq $ZIP_DIR/$function.zip -x "*.funcignore" "*requirements.txt"
           cd ${{ github.workspace }}
         done
 
