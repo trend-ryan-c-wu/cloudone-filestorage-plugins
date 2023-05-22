@@ -11,7 +11,7 @@
         },
         "functionsPackageLocation": {
             "type": "string",
-            "defaultValue": "https://github.com/trendmicro/cloudone-filestorage-plugins/releases/download/azure-python-teams-notification-1.0.0",
+            "defaultValue": "https://github.com/trendmicro/cloudone-filestorage-plugins/releases/download/azure-python-slack-notification-1.0.0",
             "metadata": {
                 "description": "Warning: Do not modify the field. Modifications may cause your deployment to fail."
             }

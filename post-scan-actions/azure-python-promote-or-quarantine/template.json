@@ -11,7 +11,7 @@
         },
         "functionsPackageLocation": {
             "type": "string",
-            "defaultValue": "https://github.com/trendmicro/cloudone-filestorage-plugins/releases/download/azure-python-teams-notification-1.0.0",
+            "defaultValue": "https://github.com/trendmicro/cloudone-filestorage-plugins/releases/download/azure-python-promote-or-quarantine-1.0.0",
             "metadata": {
                 "description": "Warning: Do not modify the field. Modifications may cause your deployment to fail."
             }
@@ -75,7 +75,7 @@
     "variables": {
         "location": "[resourceGroup().location]",
         "unifiedSAS": "[if(empty(parameters('sharedAccessSignature')), '', if(startsWith(parameters('sharedAccessSignature'), '?'), parameters('sharedAccessSignature'), concat('?', parameters('sharedAccessSignature'))))]",
-        "functionPackageLink": "[concat(parameters('functionsPackageLocation') ,'/teamsNotification.zip', variables('unifiedSAS'))]",
+        "functionPackageLink": "[concat(parameters('functionsPackageLocation') ,'/promoteOrQuarantineFunction.zip', variables('unifiedSAS'))]",
         "functionAppName": "[parameters('promoteOrQuarantineFunctionName')]",
         "hostingPlanName": "[parameters('promoteOrQuarantineFunctionName')]",
         "applicationInsightsName": "[parameters('promoteOrQuarantineFunctionName')]",
@@ -119,11 +119,10 @@
             "location": "[variables('location')]",
             "kind": "linux",
             "sku": {
-                "name": "Y1",
-                "tier": "Dynamic",
-                "size": "Y1",
-                "family": "Y",
-                "capacity": 1
+                "name": "EP1",
+                "tier": "ElasticPremium",
+                "size": "EP1",
+                "family": "EP"
             },
             "properties": {
                 "reserved": true
