@@ -38,7 +38,7 @@ runs:
     - name: Zip Files
       shell: bash
       run: |
-        ZIP_DIR=${{ inputs.plugin_path }}/zip
+        ZIP_DIR=${{ github.workspace }}/${{ inputs.plugin_path }}/zip
         mkdir -p $ZIP_DIR
 
         for function in $(echo '${{ inputs.plugin_functions }}' | jq -r '.[]'); do
